@@ -21,32 +21,41 @@ function createAndWriteOutput(operator, resultBeforeCalc, CalcNumber){
     outputResult(currentResult, calculationDescription);
 }
 
-function add(){
+function calculateResult(calculationType){
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    currentResult = currentResult + enteredNumber; // use parseInt(userInput.value)
-    createAndWriteOutput('+', initialResult, enteredNumber);
+    let mathOperator;
+    if(calculationType === 'add'){
+        currentResult = currentResult + enteredNumber; // use parseInt(userInput.value)
+        mathOperator = '+';
+    }else if(calculationType === 'sub'){
+        currentResult = currentResult - enteredNumber; // use parseInt(userInput.value)
+        mathOperator = '-';
+    }else if(calculationType === 'mul'){
+        currentResult = currentResult * enteredNumber; // use parseInt(userInput.value)
+        mathOperator = '*';
+    }else if(calculationType === 'div'){
+        currentResult = currentResult / enteredNumber; // use parseInt(userInput.value)
+        mathOperator = '/';
+    }
+    
+    createAndWriteOutput(mathOperator, initialResult, enteredNumber);
+}
+
+function add(){
+    calculateResult('add');
 }
 
 function subtract(){
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult = currentResult - enteredNumber; // use parseInt(userInput.value)
-    createAndWriteOutput('-', initialResult, enteredNumber);
+    calculateResult('sub');
 }
 
 function multiply(){
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult = currentResult * enteredNumber; // use parseInt(userInput.value)
-    createAndWriteOutput('*', initialResult, enteredNumber);
+    calculateResult('mul');
 }
 
 function divide(){
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult = currentResult / enteredNumber; // use parseInt(userInput.value)
-    createAndWriteOutput('/', initialResult, enteredNumber);
+    calculateResult('div');
 }
 
 

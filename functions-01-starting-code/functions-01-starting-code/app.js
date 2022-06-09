@@ -40,6 +40,10 @@ const getComputerChoice = function(){
     }
 };
 
+// Arrow function 
+// const getWinner = (pChoice, cChoice) =>
+//     pChoice == cChoice) ? RESULT_DRAW : ((cChoice == SELECTION_PAPER && pChoice == SELECTION_ROCK) || (cChoice == SELECTION_ROCK && pChoice == SELECTION_SCISSOR) || (cChoice == SELECTION_SCISSOR && pChoice == SELECTION_PAPER) ? RESULT_COMPUTER_WIN : RESULT_PLAYER_WIN;
+
 const getWinner = function(pChoice, cChoice){
     if(pChoice == cChoice){
         return RESULT_DRAW;
@@ -51,10 +55,24 @@ const getWinner = function(pChoice, cChoice){
 }
 
 startGameBtn.addEventListener('click', function(){
+    if(gameIsRunning){
+        return;
+    }
+    gameIsRunning = true;
     console.log('Game is starting...');
     const playerSelection = getPlayerChoice();
     console.log(playerSelection);
     const computerChoice = getComputerChoice();
     const winner = getWinner(playerSelection, computerChoice);
-    console.log(winner);
+    // console.log(winner);
+    let message = `You picked ${playerSelection} and computer picked ${computerChoice}, therefore result is `;
+    if(winner === RESULT_DRAW){
+        messsage =  message + `draw`;
+    }else if(winner == RESULT_PLAYER_WIN){
+        message = message + `won`;
+    }else{
+        messsage = message + `lost`;
+    }
+    alert(messsage);
+    gameIsRunning = false;
 });

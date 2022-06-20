@@ -39,4 +39,26 @@ btn.addEventListener("click", ()=>{
     // }
     // section.classList.toggle("visible");
     section.classList.toggle("invisible");
-})
+});
+
+    // Addding a new list item using innerHML
+    const list = document.querySelector('ul');
+    list.innerHTML = list.innerHTML + '<li class = "list-item">Item 4</li>';
+
+    const div = document.querySelector('div');
+    div.insertAdjacentHTML('beforeend', '<p>Something went wrong</p>');
+
+// const lis = document.querySelector('ul');
+// const newLi = document.createElement('li');
+// newLi.textContent = 'Item 5';
+// list.appendChild(newLi); // to add new list?
+// list.append(newLi, "New Content");
+// list.prepend(newLi);
+// const latestLi = newLi.cloneNode(false);
+// latestLi.textContent = "Item 6";
+// list.appendChild(latestLi);
+
+const listItems = list.querySelector("li");
+const listItems2 = list.querySelectorAll("li");
+console.log(listItems);
+console.log(listItems2);
